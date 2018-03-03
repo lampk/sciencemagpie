@@ -1,0 +1,5 @@
+devtools::install_github("rstudio/blogdown")
+blogdown::install_hugo()
+blogdown::hugo_version()
+blogdown::update_hugo()
+blogdown::new_site(theme = "yihui/hugo-xmag")
