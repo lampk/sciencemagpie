@@ -3,25 +3,21 @@ title: Archive
 ---
 
 
-{{ partial "top.html" . }}
+{{ partial "header.html" . }}
 
-  <article class="posts">
+{{if not .IsHome }}
+<h1>{{ .Title }}</h1>
+{{ end }}
 
-    {{ range (where .Data.Pages "Type" "post").GroupByDate "2006" -}}
-    <section>
-      <h2>{{ .Key }}</h2>
+{{ .Content }}
 
-      <ol>
-        {{ range .Pages -}}
-        <li>
-          <time datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">{{ .Date.Format "Jan 02"}}</time>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </li>
-        {{- end }}
-      </ol>
-    </section>
-    {{ end }}
+<ul>
+  {{ range (where .Data.Pages "Section" "!=" "") }}
+  <li>
+    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+    <a href="{{ .URL }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+</ul>
 
-  </article>
-
-{{ partial "bottom.html" . }}
+{{ partial "footer.html" . }}
