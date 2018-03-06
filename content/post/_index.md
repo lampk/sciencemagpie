@@ -1,3 +1,8 @@
+---
+title: Archive
+---
+
+
 {{ partial "top.html" . }}
 
   <article class="posts">
